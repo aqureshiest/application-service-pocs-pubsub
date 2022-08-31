@@ -1,0 +1,51 @@
+# Logs
+logs
+*.log
+*.log.*
+gogo/__pycache__
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+coverage
+node_modules
+
+fake-s3
+
+# IDE temporary files
+.tern-port
+
+.DS_Store
+secrets.json
+build.json
+.npmrc
+
+.idea/
+
+# Compiled files
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
+**/dist/
+
+# Directories
+.terraform/
+.vagrant/
+
+# SSH Keys
+*.pem
+
+# Backup files
+*.bak
+
+# Ignored Terraform files
+*gitignore*.tf
+
+# Sonar Cloud
+sonar-project.properties
+test/coverage
+.nyc_output/
+.scannerwork/
