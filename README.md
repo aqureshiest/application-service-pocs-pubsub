@@ -13,12 +13,21 @@ redis-server
 node application-service-pocs-subscribe/index.js
 ```
 
-4. setup subscription
+4. go to graph explorer at localhost
+
+5. setup subscription
 ```
-abc
+subscription PostAdded {
+  postAdded {
+    id
+    contents
+  }
+}
 ```
 
 5. run publish project to send external event
 ```
-abc
+node application-service-pocs-publish/index.js
 ```
+
+6. external event should show up in subscribed response
