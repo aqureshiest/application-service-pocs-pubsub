@@ -25,9 +25,9 @@ subscription PostAdded {
 }
 ```
 
-5. run publish project to send external event
+6. run publish project to send external event
 ```
 node application-service-pocs-publish/index.js
 ```
 
-6. external event should show up in subscribed response
+7. external event should show up in subscribed response
