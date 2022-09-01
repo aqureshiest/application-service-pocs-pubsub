@@ -10,6 +10,7 @@ import { useServer } from "graphql-ws/lib/use/ws";
 import express from "express";
 
 import { RedisPubSub } from "graphql-redis-subscriptions";
+import { withFilter } from "graphql-subscriptions";
 const pubsub = new RedisPubSub({
   connection: {
     host: "127.0.0.1",
@@ -28,7 +29,7 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    postAdded: Post
+    postAdded(id: ID): Post
   }
 
   type Mutation {
@@ -69,7 +70,10 @@ const resolvers = {
 
   Subscription: {
     postAdded: {
-      subscribe: () => pubsub.asyncIterator(["POST_ADDED"]),
+      subscribe: withFilter(
+        (_, __) => pubsub.asyncIterator(["POST_ADDED"]),
+        (payload, variables) => payload.postAdded.id == variables.id
+      ),
     },
   },
 };
